@@ -10,17 +10,19 @@
 		<ion-row>
 			<ion-col></ion-col>
 			<ion-col col-8>
-				<ion-list>
-					<ion-item>
-						<ion-input type="email" placeholder="Username" [(ngModel)]="user.email" ></ion-input>
-					</ion-item>
-					<ion-item>
-						<ion-input type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
-					</ion-item>
-					<ion-item class="text-center">
-						<button ion-button outline round large color="login" (tap)="submit()" >Ingresar</button>
-					</ion-item>
-				</ion-list>
+				<form [formGroup]="loginForm" (ngSubmit)="submit()" novalidate>
+					<ion-list>
+						<ion-item>
+							<ion-input type="text" formControlName="username" placeholder="Usuario" ></ion-input>
+						</ion-item>
+						<ion-item>
+							<ion-input type="password" formControlName="password" placeholder="Password" ></ion-input>
+						</ion-item>
+						<ion-item class="text-center">
+							<button ion-button outline round large color="login" [disabled]="submitted" type="submit" >Ingresar</button>
+						</ion-item>
+					</ion-list>
+				</form>
 			</ion-col>
 			<ion-col></ion-col>
 		</ion-row>

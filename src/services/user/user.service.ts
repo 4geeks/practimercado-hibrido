@@ -1,3 +1,4 @@
+import { Storage } from '@ionic/storage';
 import { Injectable } from "@angular/core";
 import { Http, Headers, Response } from "@angular/http";
 import { Observable } from "rxjs/Rx";
@@ -9,16 +10,17 @@ import { Api } from "../api";
 
 @Injectable()
 export class UserService {
-	constructor(private http: Http) {}
+	
+	constructor(private http: Http, public storage: Storage) {}
 
 	login(user: User) {
 		let headers = new Headers();
 		headers.append("Content-Type", "application/json");
 
 		return this.http.post(
-			Api.apiUrl + "api/users/login/",
+			Api.apiUrl + "auth/login/",
 			JSON.stringify({
-				username: user.email,
+				username: user.username,
 				password: user.password,
 			}),
 			{ headers: headers }
@@ -26,7 +28,7 @@ export class UserService {
 		.map(response => response.json())
 		.do(data => {
 			Api.token = data.token;
-			console.log(Api.token);
+			this.storage.set('token-pct', data.token);
 		})
 		.catch(this.handleErrors);
 	}
