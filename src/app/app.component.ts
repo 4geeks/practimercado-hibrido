@@ -1,27 +1,36 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+import { Storage } from '@ionic/storage';
 import { LoginComponent } from '../pages/login/login.component';
+import { SideMenuComponent } from '../pages/sidemenu/sidemenu.component';
 
 @Component({
-  templateUrl: 'app.html'
+	templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
+	@ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginComponent;
+	rootPage: any = LoginComponent;
 
-  constructor(public platform: Platform) {
-    this.initializeApp();
-  }
+	constructor(public platform: Platform, public storage: Storage) {
+		this.initializeApp();
+	}
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      Splashscreen.hide();
-    });
-  }
+	initializeApp() {
+		this.platform.ready().then(() => {
+			// Okay, so the platform is ready and our plugins are available.
+			// Here you can do any higher level native things you might need.
+			StatusBar.styleDefault();
+			Splashscreen.hide();
+			this.storage.get('token-pct').then((value) => {
+				if(value){
+					this.nav.setRoot(SideMenuComponent);
+				}else{
+					this.nav.setRoot(LoginComponent);
+				}
+			});
+		});
+	}
 
 }

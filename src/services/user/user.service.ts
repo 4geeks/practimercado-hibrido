@@ -37,4 +37,11 @@ export class UserService {
 		console.log(error.json());
 		return Observable.throw(error.json());
 	}
+
+	logout(){
+		this.storage.remove('token-pct').then(() => {
+			Api.token = '';
+		});
+		return true;
+	}
 }

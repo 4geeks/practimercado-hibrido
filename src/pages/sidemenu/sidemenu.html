@@ -3,17 +3,27 @@
 		<ion-grid>
 			<ion-row>
 				<ion-col class="menu-logo">
-					<img width="165" height="72" src="../assets/logo_pm2.png">
+					<img height="72" src="./assets/logo_icon_bl.png">
 				</ion-col>
 			</ion-row>
 		</ion-grid>
-		<ion-list>
-			<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+		<ion-list class="sidemenu-list-item">
+			<button class="menu-items-btn" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+				<ion-icon [name]="p.icon"></ion-icon>
 				{{p.title}}
 			</button>
 		</ion-list>
 	</ion-content>
-
+	<ion-footer>
+		<ion-toolbar>
+			<ion-list class="sidemenu-list-item">
+				<button class="menu-items-btn" menuClose ion-item (click)="logout()">
+					<ion-icon name="ios-power"></ion-icon>
+					Cerrar sesión
+				</button>
+			</ion-list>
+		</ion-toolbar>
+	</ion-footer>
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

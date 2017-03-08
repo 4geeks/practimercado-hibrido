@@ -1,22 +1,25 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, AlertController } from 'ionic-angular';
+import { UserService } from '../../services/user/user.service';
 import { Page2 } from '../page2/page2';
 import { OrdersComponent } from '../orders/orders.component';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
-  templateUrl: 'sidemenu.html'
+  templateUrl: 'sidemenu.html',
+  providers: [UserService]
 })
 export class SideMenuComponent {
 	@ViewChild(Nav) nav: Nav;
 
 	rootPage: any = Page2;
-	pages: Array<{title: string, component: any}>;
+	pages: Array<{title: string, component: any, icon: string}>;
 	
-	constructor(public platform: Platform) {
+	constructor(public platform: Platform, private userService: UserService, public alertCtrl: AlertController) {
 		this.initializeApp();
 		this.pages = [
-			{ title: 'Ordenes', component: OrdersComponent },
-			{ title: 'Perfil', component: Page2 }
+			{ title: 'Ordenes', component: OrdersComponent, icon: 'ios-list-box-outline' },
+			{ title: 'Perfil', component: Page2, icon: 'ios-contact-outline' }
 		];
 	}
 
@@ -28,5 +31,18 @@ export class SideMenuComponent {
 		// Reset the content nav to have just this page
 		// we wouldn't want the back button to show in this scenario
 		this.nav.setRoot(page.component);
+	}
+
+	logout(){
+		if(this.userService.logout()){
+			this.nav.setRoot(LoginComponent);
+		}else{
+			let alert = this.alertCtrl.create({
+				title: 'Logout',
+				subTitle: 'Problemas cerrando sesión',
+				buttons: ['OK']
+			});
+			alert.present();
+		}
 	}
 }

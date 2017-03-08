@@ -3,9 +3,24 @@
 	margin-top: 30px;
 }
 .scroll-content{
-	background: #00a8e1;
+	background: $color-base;
 }
 .toolbar-background-md{
-	border-color: #00a8e1;
-    background: #00a8e1;
+	border-color: $color-base;
+    background: $color-base;
+}
+
+.sidemenu-list-item {
+	.menu-items-btn{
+		background: $color-base;
+		ion-label{
+			&.label{
+				color: $color-list-item;
+				font-size: 1.9rem;
+			}
+		}
+		.item-inner{
+			border-bottom: none;
+		}
+	}
 }
