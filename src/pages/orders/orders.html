@@ -1,23 +1,32 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Practimercados | Ordenes</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Ordenes</ion-title>
+	</ion-navbar>
 </ion-header>
 
-<ion-content>
-  <!--ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list-->
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+<ion-content class="content-custom">
+	<ion-card *ngFor="let item of orders" class="orders-card" (click)="itemTapped($event, item)">
+		<ion-card-content>
+			<ion-row>
+				<ion-col class="content-product-number" col-3>
+					<span class="number-product">{{item.products.length}}</span><br>
+					<span class="number-product">unid.</span>
+				</ion-col>
+				<ion-col col-8>
+					<span class="gray-detail">#{{item.id}}</span><br>
+					<span class="status-detail status-{{item.status.value}}">{{item.customer.username}}</span><br>
+					<span class="gray-detail">{{ '2017-03-09 00:00:00' | date: 'dd / MM / yyyy'}}</span>
+				</ion-col>
+				<ion-col col-1 class="content-status-bar">
+					<div class="status-bar status-{{item.status.value}}">
+						
+					</div>
+				</ion-col>
+			</ion-row>
+			
+		</ion-card-content>
+	</ion-card>
 </ion-content>

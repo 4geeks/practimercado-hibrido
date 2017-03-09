@@ -1,3 +1,65 @@
-page-page2 {
+.orders-card{
+	ion-card-content{
+		padding: 0;
+		line-height: 2.3rem;
+		.content-product-number{
+			text-align: center;
+			padding-top: 15px;
+			.number-product{
+				font-weight: 800;
+				font-size: 3rem;
+				color: #919191;
+			}
+		}		
+		.gray-detail{
+			font-weight: 800;
+			font-size: 2rem;
+			color: #919191;
+		}
+		.status-detail{
+			font-weight: 800;
+			font-size: 3.3rem;
+			&.status-5{/*Rechazado*/
+				color: $color-status-5;
+			}
+			&.status-4{/*Entregado*/
+				color: $color-status-4;
+			}
+			&.status-3{/*Por entregar*/
+				color: $color-status-3;
+			}
+			&.status-2{/*Preparado*/
+				color: $color-status-2;
+			}
+			&.status-1{/*Por aprobar*/
+				color: $color-status-1;
+			}
+		}
+		.content-status-bar{
+			padding-right: 0;
+		}
+		.status-bar {
+			float: right;
+			height: 100%;
+			width: 10px;
+			border-radius: 4px 0px 0px 4px;
 
+			&.status-5{/*Rechazado*/
+				background-color: $color-status-5;
+			}
+			&.status-4{/*Entregado*/
+				background-color: $color-status-4;
+			}
+			&.status-3{/*Por entregar*/
+				background-color: $color-status-3;
+			}
+			&.status-2{/*Preparado*/
+				background-color: $color-status-2;
+			}
+			&.status-1{/*Por aprobar*/
+				background-color: $color-status-1;
+			}
+		}
+	}
 }
+

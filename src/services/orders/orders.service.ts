@@ -5,32 +5,28 @@ import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
 
-import { User } from "../../models/user";
+import { Order } from "../../models/order";
 import { Api } from "../api";
 
 @Injectable()
-export class UserService {
+export class OrderService {
 	
 	constructor(private http: Http, public storage: Storage) {}
 
-	login(user: User) {
+	getOrders() {
 		let headers = new Headers();
 		headers.append("Content-Type", "application/json");
-
-		return this.http.post(
-			Api.apiUrl + "auth/login/",
-			JSON.stringify({
-				username: user.username,
-				password: user.password,
-			}),
-			{ headers: headers }
-			)
-		.map(response => response.json())
-		.do(data => {
-			Api.token = data.token;
-			this.storage.set('token-pct', data.token);
-		})
-		.catch(this.handleErrors);
+		if(Api.token){
+			headers.append("Authorization", "JWT " + Api.token);
+			return this.http.get(
+				Api.apiUrl + "api/orders/",
+				{ headers: headers }
+				)
+			.map(response => response.json() as Order[])
+			.catch(this.handleErrors);
+		}else{
+			//display error alert o intente el login
+		}
 	}
 
 	handleErrors(error: Response) {

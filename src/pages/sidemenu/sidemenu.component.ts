@@ -12,7 +12,7 @@ import { LoginComponent } from '../login/login.component';
 export class SideMenuComponent {
 	@ViewChild(Nav) nav: Nav;
 
-	rootPage: any = Page2;
+	rootPage: any = OrdersComponent;
 	pages: Array<{title: string, component: any, icon: string}>;
 	
 	constructor(public platform: Platform, private userService: UserService, public alertCtrl: AlertController) {

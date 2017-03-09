@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Nav, NavController, AlertController } from 'ionic-angular';
 import { Platform } from 'ionic-angular';
-import { User } from '../../models/user/user';
+import { User } from '../../models/user';
 import { UserService } from '../../services/user/user.service';
 import { MyApp } from '../../app/app.component';
 import { SideMenuComponent } from '../../pages/sidemenu/sidemenu.component';

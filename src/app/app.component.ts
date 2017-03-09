@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { Storage } from '@ionic/storage';
+import { Api } from "../services/api";
 import { LoginComponent } from '../pages/login/login.component';
 import { SideMenuComponent } from '../pages/sidemenu/sidemenu.component';
 
@@ -24,6 +25,7 @@ export class MyApp {
 			StatusBar.styleDefault();
 			Splashscreen.hide();
 			this.storage.get('token-pct').then((value) => {
+				Api.token = value;
 				if(value){
 					this.nav.setRoot(SideMenuComponent);
 				}else{
