@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { OrderService } from '../../services/orders/orders.service';
 import { Order } from "../../models/order";
+import { OrderDetailComponent } from "../order_detail/order_detail.component";
+
 
 @Component({
 	selector: 'page-orders',
@@ -9,16 +11,12 @@ import { Order } from "../../models/order";
 	providers: [OrderService],
 })
 export class OrdersComponent {
-	selectedItem: any;
-	icons: string[];
-	items: Array<{title: string, note: string, icon: string}>;
 	orders: Array<Order>;
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, private orderService: OrderService) {
+	constructor(public navCtrl: NavController, private orderService: OrderService) {
 		this.orderService.getOrders()
 			.subscribe(
 				(data) => {
-					console.log(data);
 					this.orders = data;
 					console.log(this.orders);
 				},
@@ -30,8 +28,38 @@ export class OrdersComponent {
 
 	itemTapped(event, item) {
 		// That's right, we're pushing to ourselves!
-		this.navCtrl.push(OrdersComponent, {
-			item: item
+		this.navCtrl.push(OrderDetailComponent, {
+			order: item
 		});
+	}
+
+	status_text(obj){
+		let text = "";
+		switch (obj.status.value) {
+			case 1:
+				text = "Por aprobar";
+				break;
+			case 2:
+				text = "Preparado";
+				break;
+			case 3:
+				text = "Por entregar";
+				break;
+			case 4:
+				text = "Entregado"
+				break;
+			case 5:
+				text = "Rechazado"
+				break;
+			default:
+				break;
+		}
+
+		return text;
+	}
+
+	doInfinite(infiniteScroll){
+		console.log("esta pasando algo!");
+		infiniteScroll.complete();
 	}
 }

@@ -7,18 +7,20 @@
 			padding-top: 15px;
 			.number-product{
 				font-weight: 800;
-				font-size: 3rem;
-				color: #919191;
+				font-size: 2.7rem;
+				color: $color-gray;
 			}
 		}		
 		.gray-detail{
 			font-weight: 800;
 			font-size: 2rem;
-			color: #919191;
+			color: $color-gray;
 		}
 		.status-detail{
 			font-weight: 800;
-			font-size: 3.3rem;
+			font-size: 2.6rem;
+			text-transform: uppercase;
+
 			&.status-5{/*Rechazado*/
 				color: $color-status-5;
 			}
