@@ -5,7 +5,7 @@ import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
 
-import { Order } from "../../models/order";
+//import { Order } from "../../models/order";
 import { Api } from "../api";
 
 @Injectable()
@@ -13,16 +13,20 @@ export class OrderService {
 	
 	constructor(private http: Http, public storage: Storage) {}
 
-	getOrders() {
+	getOrders(url = null) {
 		let headers = new Headers();
 		headers.append("Content-Type", "application/json");
+		console.log(Api.token);
 		if(Api.token){
 			headers.append("Authorization", "JWT " + Api.token);
 			return this.http.get(
-				Api.apiUrl + "api/orders/",
+				url ? url : Api.apiUrl + "api/delivering/",
 				{ headers: headers }
 				)
-			.map(response => response.json() as Order[])
+			.map(response => {
+				console.log(response.headers.get('Link'));
+				return response;
+			})
 			.catch(this.handleErrors);
 		}else{
 			//display error alert o intente el login
@@ -30,7 +34,6 @@ export class OrderService {
 	}
 
 	handleErrors(error: Response) {
-		console.log(error.json());
 		return Observable.throw(error.json());
 	}
 
