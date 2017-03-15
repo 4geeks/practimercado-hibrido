@@ -34,7 +34,6 @@ export class UserService {
 	}
 
 	handleErrors(error: Response) {
-		console.log(error.json());
 		return Observable.throw(error.json());
 	}
 

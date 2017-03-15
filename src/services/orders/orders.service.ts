@@ -16,7 +16,6 @@ export class OrderService {
 	getOrders(url = null) {
 		let headers = new Headers();
 		headers.append("Content-Type", "application/json");
-		console.log(Api.token);
 		if(Api.token){
 			headers.append("Authorization", "JWT " + Api.token);
 			return this.http.get(
@@ -24,23 +23,36 @@ export class OrderService {
 				{ headers: headers }
 				)
 			.map(response => {
-				console.log(response.headers.get('Link'));
 				return response;
 			})
 			.catch(this.handleErrors);
 		}else{
-			//display error alert o intente el login
+			return Observable.throw({ detail: 'Sin autorización', code: 401 });
+		}
+	}
+
+	updateStatusOrder(url, status){
+		let headers = new Headers();
+		headers.append("Content-Type", "application/json");
+		if(Api.token){
+			headers.append("Authorization", "JWT " + Api.token);
+			return this.http.put(
+				url,
+				JSON.stringify({
+					value: status
+				}),
+				{ headers: headers }
+				)
+			.map(response => {
+				return response;
+			})
+			.catch(this.handleErrors);
+		}else{
+			return Observable.throw({ detail: 'Sin autorización', code: 401 });
 		}
 	}
 
 	handleErrors(error: Response) {
 		return Observable.throw(error.json());
-	}
-
-	logout(){
-		this.storage.remove('token-pct').then(() => {
-			Api.token = '';
-		});
-		return true;
 	}
 }

@@ -1,0 +1,31 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Orden</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="content-custom">
+	<ion-grid>
+		<ion-row>
+			<ion-col class="col-data border-down" col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
+				<span class="text-order">#{{order.id}}</span><br>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="col-data customer-data" col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
+				<div class="customer-info">
+					<ion-textarea placeholder="Por qué rechazas el pedido"></ion-textarea>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="col-data" col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
+				<button *ngIf="order.status.value==6" class="btn-change-status" ion-button round >Entregado</button><br>
+				<button *ngIf="order.status.value==6" class="btn-change-status" ion-button round color="danger" >Rechazar</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

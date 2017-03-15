@@ -1,0 +1,41 @@
+.col-data{
+	text-align: center;
+	color: $color-gray;
+	&.border-down{
+		border-bottom: 1px solid $color-border;
+	}	
+	.text-order{
+		font-size: 1.7rem;
+		font-weight: bold;
+	}
+	.text-products{
+		font-size: 2.3rem;
+	}
+
+	&.customer-data{
+		text-align: left;
+	}
+	.customer-icon{
+		font-size: 2.5rem;
+		padding: 10px;
+		vertical-align: middle;
+		color: $color-base;
+	}
+	.customer-info{
+		display: inline-block;
+		vertical-align: middle;
+		padding: 5px 10px;
+		max-width: 85%;
+		span.customer-title{
+			font-size: 1.9rem;
+			font-weight: bold;
+		}
+		span.customer-name{
+			font-size: 1.7rem;
+		}
+	}
+	.btn-change-status{
+		font-size: 1.5rem;
+		text-transform: capitalize;
+	}
+}

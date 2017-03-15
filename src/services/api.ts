@@ -1,5 +1,5 @@
 export class Api {
-  //static apiUrl = "https://api.everlive.com/v1/GWfRtXi1Lwt4jcqK/";
-  static apiUrl = "http://practimercado.dev:8000/";
+  //static apiUrl = "http://10.0.2.2:8000/";
+  static apiUrl = "http://127.0.0.1:8000/";
   static token = "";
 }

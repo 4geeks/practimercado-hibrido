@@ -6,7 +6,8 @@ import { SideMenuComponent } from '../pages/sidemenu/sidemenu.component';
 import { Page2 } from '../pages/page2/page2';
 import { OrdersComponent } from '../pages/orders/orders.component';
 import { LoginComponent } from '../pages/login/login.component';
-import { OrderDetailComponent } from '../pages/order_detail/order_detail.component';
+import { OrderDetailComponent } from '../pages/order-detail/order-detail.component';
+import { OrderStatusComponent } from '../pages/order-status/order-status.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { OrderDetailComponent } from '../pages/order_detail/order_detail.compone
     SideMenuComponent,
     Page2,
     OrdersComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    OrderStatusComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -27,7 +29,8 @@ import { OrderDetailComponent } from '../pages/order_detail/order_detail.compone
     SideMenuComponent,
     Page2,
     OrdersComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    OrderStatusComponent
   ],
   providers: [Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
