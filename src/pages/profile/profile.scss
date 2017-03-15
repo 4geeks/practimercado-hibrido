@@ -1,0 +1,57 @@
+.profile-grid{
+	padding: 0;
+}
+.profile-content{
+	background-color: $color-base;
+	padding: 25px;
+
+	.profile-name{
+		font-size: 3.5rem;
+		color: color($colors, login)
+	}
+}
+.profile-form{
+	padding: 25px;
+
+	.profile-save{
+		padding: 2rem 2.6rem;
+	}
+	.profile-title{
+		text-align: center;
+		font-size: 1.9rem;
+		font-weight: bold;
+		color: $color-gray;
+		padding: 0px 0px 15px
+	}
+	.formError{
+		min-height: 2.6rem;
+		.item-inner{
+			border-bottom: none;
+		}
+		ion-label{
+			margin: 0;
+			color: color($colors, danger);
+		}
+	}
+}
+.alert-icon{
+	display: inline-block;
+    font-family: "Ionicons";
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-rendering: auto;
+    text-transform: none;
+    speak: none;
+    font-size: 80px;
+    color: color($colors, base);
+}
+
+.profile-alert .alert-sub-title{
+	text-align: center;
+	color: color($colors, base);
+	font-size: 2rem !important;
+}

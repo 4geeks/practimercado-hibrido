@@ -1,0 +1,54 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title></ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid class="profile-grid">
+		<ion-row>
+			<ion-col class="profile-content" col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
+				<span class="profile-name">Miguel Briceño</span>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="profile-form" col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
+				<div class="profile-title">Cambio de contraseña</div>
+				<form [formGroup]="passwordForm" (ngSubmit)="submit()" novalidate>
+					<ion-list>
+						<ion-item>
+							<ion-input type="password" formControlName="curr_password" placeholder="Contraseña actual" ></ion-input>
+						</ion-item>
+						<ion-item class="formError" *ngIf="passwordForm.controls.curr_password.touched && passwordForm.controls.curr_password.hasError('required')">
+							<small>
+								Este campo es obligatorio
+							</small>
+						</ion-item>
+						<ion-item>
+							<ion-input type="password" formControlName="new_password" placeholder="Nueva contraseña" ></ion-input>
+						</ion-item>
+						<ion-item class="formError" *ngIf="passwordForm.controls.new_password.touched && passwordForm.controls.new_password.hasError('required')">
+							<small>
+								Este campo es obligatorio
+							</small>
+						</ion-item>
+						<ion-item>
+							<ion-input type="password" formControlName="repeat_password" placeholder="Repetir nueva contraseña" ></ion-input>
+						</ion-item>
+						<ion-item class="formError" *ngIf="passwordForm.controls.repeat_password.touched && passwordForm.hasError('mismatchedPasswords')">
+							<small>
+								Las contraseñas no coinciden
+							</small>
+						</ion-item>
+						<ion-item class="text-center">
+							<button ion-button round small color="base" class="profile-save" [disabled]="!passwordForm.valid || submitted" type="submit" >Guardar</button>
+						</ion-item>
+					</ion-list>
+				</form>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

@@ -33,7 +33,28 @@ export class UserService {
 		.catch(this.handleErrors);
 	}
 
+	changePassword(curr_password: string, new_password:string){
+		let headers = new Headers();
+		headers.append("Content-Type", "application/json");
+		if(Api.token){
+			console.log(Api.token);
+			headers.append("Authorization", "JWT " + Api.token);
+			return this.http.put(
+				Api.apiUrl + "auth/password/",
+				JSON.stringify({
+					current_password: curr_password,
+					new_password: new_password,
+				}),
+				{ headers: headers })
+			.map(response => { return response })
+			.catch(this.handleErrors);
+		}else{
+			return Observable.throw({ detail: 'Sin autorización', code: 401 });
+		}
+	}
+
 	handleErrors(error: Response) {
+		console.log(error);
 		return Observable.throw(error.json());
 	}
 
