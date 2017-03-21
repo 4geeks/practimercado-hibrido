@@ -1,9 +1,10 @@
 import { Storage } from '@ionic/storage';
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { Http, Headers, Response } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
+import { EnvVariables } from '../../app/environment-variables/environment-variables.token';
 
 //import { Order } from "../../models/order";
 import { Api } from "../api";
@@ -11,7 +12,7 @@ import { Api } from "../api";
 @Injectable()
 export class OrderService {
 	
-	constructor(private http: Http, public storage: Storage) {}
+	constructor(private http: Http, public storage: Storage, @Inject(EnvVariables) public env) {}
 
 	getOrders(url = null) {
 		let headers = new Headers();
@@ -19,7 +20,7 @@ export class OrderService {
 		if(Api.token){
 			headers.append("Authorization", "JWT " + Api.token);
 			return this.http.get(
-				url ? url : Api.apiUrl + "api/delivering/",
+				url ? url : this.env.apiUrl + "api/delivering/",
 				{ headers: headers }
 				)
 			.map(response => {

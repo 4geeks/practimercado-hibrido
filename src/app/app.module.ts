@@ -8,6 +8,8 @@ import { OrdersComponent } from '../pages/orders/orders.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { OrderDetailComponent } from '../pages/order-detail/order-detail.component';
 import { OrderStatusComponent } from '../pages/order-status/order-status.component';
+import { EnvironmentsModule } from './environment-variables/environment-variables.module';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { OrderStatusComponent } from '../pages/order-status/order-status.compone
     OrderStatusComponent
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    EnvironmentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

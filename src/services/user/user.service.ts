@@ -1,24 +1,24 @@
 import { Storage } from '@ionic/storage';
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { Http, Headers, Response } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
-
+import { EnvVariables } from '../../app/environment-variables/environment-variables.token';
 import { User } from "../../models/user";
 import { Api } from "../api";
 
 @Injectable()
 export class UserService {
 	
-	constructor(private http: Http, public storage: Storage) {}
+	constructor(private http: Http, public storage: Storage, @Inject(EnvVariables) public env) {}
 
 	login(user: User) {
 		let headers = new Headers();
 		headers.append("Content-Type", "application/json");
 
 		return this.http.post(
-			Api.apiUrl + "auth/login/",
+			this.env.apiUrl + "auth/login/",
 			JSON.stringify({
 				username: user.username,
 				password: user.password,
@@ -40,7 +40,7 @@ export class UserService {
 			console.log(Api.token);
 			headers.append("Authorization", "JWT " + Api.token);
 			return this.http.put(
-				Api.apiUrl + "auth/password/",
+				this.env.apiUrl + "auth/password/",
 				JSON.stringify({
 					current_password: curr_password,
 					new_password: new_password,

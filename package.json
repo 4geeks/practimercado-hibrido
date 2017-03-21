@@ -42,5 +42,8 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "Practimercados: An Ionic project"
+  "description": "Practimercados: An Ionic project",
+  "config": {
+    "ionic_webpack": "./webpack.config.js"
+  }
 }
