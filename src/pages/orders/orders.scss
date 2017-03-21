@@ -18,7 +18,7 @@
 		}
 		.status-detail{
 			font-weight: 800;
-			font-size: 2.6rem;
+			font-size: 2.4rem;
 			text-transform: uppercase;
 
 			&.status-5{/*Rechazado*/
@@ -27,10 +27,10 @@
 			&.status-4{/*Entregado*/
 				color: $color-status-4;
 			}
-			&.status-3{/*Por entregar*/
+			&.status-6{/*Por entregar*/
 				color: $color-status-3;
 			}
-			&.status-2{/*Preparado*/
+			&.status-3{/*Despachando*/
 				color: $color-status-2;
 			}
 			&.status-1{/*Por aprobar*/
@@ -52,10 +52,10 @@
 			&.status-4{/*Entregado*/
 				background-color: $color-status-4;
 			}
-			&.status-3{/*Por entregar*/
+			&.status-6{/*Por entregar*/
 				background-color: $color-status-3;
 			}
-			&.status-2{/*Preparado*/
+			&.status-3{/*Despachando*/
 				background-color: $color-status-2;
 			}
 			&.status-1{/*Por aprobar*/

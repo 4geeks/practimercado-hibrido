@@ -5,7 +5,7 @@ import { OrderService } from '../../services/orders/orders.service';
 import { Order } from "../../models/order";
 import { OrderStatusComponent } from '../order-status/order-status.component';
 import { LoginComponent } from '../login/login.component';
-//import { OrdersComponent } from '../orders/orders.component';
+import { OrdersComponent } from '../orders/orders.component';
 
 @Component({
 	selector: 'order-detail',
@@ -25,16 +25,16 @@ export class OrderDetailComponent {
 	}
 
 	changeStatus(status){
-		this.navCtrl.push(OrderStatusComponent, { order: this.order } );
+		//this.navCtrl.push(OrderStatusComponent, { order: this.order } );
 
-		/* Logica de cambio de estatus ya funcional
+		/* Logica de cambio de estatus ya funcional */
 		this.orderService.updateStatusOrder(this.order.status.href, status)
 			.subscribe(
 				(data) => {
 					this.navCtrl.push(OrdersComponent);
 				},
 				(error) => { this.handlerErrors(error) }
-			);*/
+			);
 	}
 
 	rejectOrder(){

@@ -53,13 +53,16 @@ export class OrdersComponent {
 				text = "Preparado";
 				break;
 			case 3:
-				text = "Por entregar";
+				text = "Despachando";
 				break;
 			case 4:
-				text = "Entregado"
+				text = "Entregado";
 				break;
 			case 5:
-				text = "Rechazado"
+				text = "Rechazado";
+				break;
+			case 6:
+				text = "Por entregar";
 				break;
 			default:
 				break;

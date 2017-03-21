@@ -1,3 +1,32 @@
-page-order-status {
+.grid-status{
+	height: 80%;
+	.text-status{
+		height: 100%;
+		ion-col{
+			height: 100%
+		}
+	}
+}
 
+.col-data {
+	.customer-info{
+		&.reject-data{
+			width: 100%;
+			max-width: 100%;
+			height: 100%;
+		}
+		ion-textarea{
+			height: 80%;
+			textarea{
+				height: 100%;
+			}
+		}
+	}
+}
+
+.content-bottom{
+	position: absolute;
+	bottom: 5%;
+	text-align: center;
+	width: 100%;
 }

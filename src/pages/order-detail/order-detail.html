@@ -20,7 +20,7 @@
 				<ion-icon ios="ios-person" md="md-person" class="customer-icon"></ion-icon>
 				<div class="customer-info">
 					<span class="customer-title">Persona de Contacto</span><br>
-					<span class="customer-name">{{order.customer.username}}</span>
+					<span class="customer-name">{{order.customer.full_name}}</span>
 				</div>
 			</ion-col>
 		</ion-row>
@@ -37,9 +37,9 @@
 		</ion-row>
 		<ion-row>
 			<ion-col class="col-data" col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
-				<button *ngIf="order.status.value==3" class="btn-change-status" (click)="changeStatus(1)" ion-button round >Aceptar</button>
-				<button *ngIf="order.status.value==6" class="btn-change-status" (click)="changeStatus(4)" ion-button round >Entregado</button><br>
-				<button *ngIf="order.status.value==6" class="btn-change-status" (click)="rejectOrder()" ion-button round color="danger" >Rechazar</button>
+				<button *ngIf="order.status.value==6" class="btn-change-status" (click)="changeStatus(3)" ion-button round >Aceptar</button>
+				<button *ngIf="order.status.value==3" class="btn-change-status" (click)="changeStatus(4)" ion-button round >Entregado</button><br>
+				<button *ngIf="order.status.value==3" class="btn-change-status" (click)="rejectOrder()" ion-button round color="danger" >Rechazar</button>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
