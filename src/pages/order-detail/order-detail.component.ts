@@ -6,6 +6,7 @@ import { Order } from "../../models/order";
 import { OrderStatusComponent } from '../order-status/order-status.component';
 import { LoginComponent } from '../login/login.component';
 import { OrdersComponent } from '../orders/orders.component';
+import { OrderMapComponent } from '../order-map/order-map.component';
 
 @Component({
 	selector: 'order-detail',
@@ -25,20 +26,50 @@ export class OrderDetailComponent {
 	}
 
 	changeStatus(status){
-		//this.navCtrl.push(OrderStatusComponent, { order: this.order } );
-
-		/* Logica de cambio de estatus ya funcional */
-		this.orderService.updateStatusOrder(this.order.status.href, status)
+		/* Cambio de estatus*/
+		this.orderService.updateOrder(this.order.status.href, status)
 			.subscribe(
 				(data) => {
-					this.navCtrl.push(OrdersComponent);
+					this.navCtrl.setRoot(OrdersComponent);
 				},
 				(error) => { this.handlerErrors(error) }
 			);
 	}
 
+	status_text(obj){
+		let text = "";
+		switch (obj.status.value) {
+			case 1:
+				text = "Por aprobar";
+				break;
+			case 2:
+				text = "Preparado";
+				break;
+			case 3:
+				text = "Despachando";
+				break;
+			case 4:
+				text = "Entregado";
+				break;
+			case 5:
+				text = "Rechazado";
+				break;
+			case 6:
+				text = "Por entregar";
+				break;
+			default:
+				break;
+		}
+
+		return text;
+	}
+
 	rejectOrder(){
 		this.navCtrl.push(OrderStatusComponent, { order: this.order } );
+	}
+
+	viewMap(){
+		this.navCtrl.push(OrderMapComponent, { order: this.order } );
 	}
 
 	handlerErrors(error){

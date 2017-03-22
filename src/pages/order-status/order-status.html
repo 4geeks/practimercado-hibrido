@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content class="content-custom">
+	<form [formGroup]="orderForm" (ngSubmit)="changeStatus()" novalidate>
 	<ion-grid class="grid-status">
 		<ion-row>
 			<ion-col class="col-data border-down" col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
@@ -17,17 +18,13 @@
 		<ion-row class="text-status">
 			<ion-col class="col-data customer-data " col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
 				<div class="customer-info reject-data">
-					<ion-textarea col-12 placeholder="Por qué rechazas el pedido"></ion-textarea>
+					<ion-textarea formControlName="comment" col-12 placeholder="Por qué rechazas el pedido"></ion-textarea>
 				</div>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col class="col-data" col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
-				
 			</ion-col>
 		</ion-row>
 	</ion-grid>
 	<div class="content-bottom">
-		<button *ngIf="order.status.value==3" class="btn-change-status" ion-button round >Enviar</button>
+		<button type="submit" *ngIf="order.status.value==3" [disabled]="!orderForm.valid || submitted" class="btn-change-status" ion-button round >Entregado</button>
 	</div>
+	</form>
 </ion-content>

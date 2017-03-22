@@ -7,6 +7,10 @@
 	.text-order{
 		font-size: 1.7rem;
 		font-weight: bold;
+		&.text-status{
+			text-transform: uppercase;
+			color: $color-status-3;
+		}
 	}
 	.text-products{
 		font-size: 2.3rem;

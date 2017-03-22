@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="content-custom">
-	<ion-card *ngFor="let item of orders" class="orders-card" (click)="itemTapped($event, item)">
+	<ion-card *ngFor="let item of orders | orderBy: ['+id']" class="orders-card" (click)="itemTapped($event, item)">
 		<ion-card-content>
 			<ion-row>
 				<ion-col class="content-product-number" col-3>

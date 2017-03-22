@@ -27,6 +27,12 @@ export class Customer{
 	username: string;
 }
 
+export class Comment{
+	id: number;
+	value: string;
+	href: string;
+}
+
 export class Order {
 	id: number;
 	assigned_shop: Shop;
@@ -38,6 +44,10 @@ export class Order {
 	coord_lon: number;
 	courier: string;
 	href: string;
-	password: string;
+	comments: Comment;
 	date_add: string = '2017-03-09 00:00:00';
+	shipped_at: string;
+	delivered_at: string;
+	price_subtotal: number;
+	price_total: number;
 }

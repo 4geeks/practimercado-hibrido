@@ -32,7 +32,7 @@ export class OrderService {
 		}
 	}
 
-	updateStatusOrder(url, status){
+	updateOrder(url, status){
 		let headers = new Headers();
 		headers.append("Content-Type", "application/json");
 		if(Api.token){

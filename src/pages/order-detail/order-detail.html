@@ -12,7 +12,8 @@
 		<ion-row>
 			<ion-col class="col-data border-down" col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
 				<span class="text-order">#{{order.id}}</span><br>
-				<span class="text-products">{{order.products.length}} unid.</span>
+				<span class="text-products">{{order.products.length}} unid.</span><br>
+				<span class="text-order text-status">{{status_text(order)}}</span><br>
 			</ion-col>
 		</ion-row>
 		<ion-row>
@@ -38,8 +39,9 @@
 		<ion-row>
 			<ion-col class="col-data" col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
 				<button *ngIf="order.status.value==6" class="btn-change-status" (click)="changeStatus(3)" ion-button round >Aceptar</button>
-				<button *ngIf="order.status.value==3" class="btn-change-status" (click)="changeStatus(4)" ion-button round >Entregado</button><br>
-				<button *ngIf="order.status.value==3" class="btn-change-status" (click)="rejectOrder()" ion-button round color="danger" >Rechazar</button>
+				<button *ngIf="order.status.value==3" class="btn-change-status" (click)="changeStatus(4)" ion-button round >Entregado</button><br *ngIf="order.status.value==3">
+				<button *ngIf="order.status.value==3" class="btn-change-status" (click)="rejectOrder()" ion-button round color="danger" >No Entregado</button><br>
+				<button class="btn-change-status" (click)="viewMap()" ion-button round >Como Llegar</button>
 			</ion-col>
 		</ion-row>
 	</ion-grid>

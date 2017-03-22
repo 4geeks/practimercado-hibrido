@@ -11,7 +11,7 @@ var parse = require("parse-link-header");
 @Component({
 	selector: 'page-orders',
 	templateUrl: 'orders.html',
-	providers: [OrderService],
+	providers: [OrderService]
 })
 export class OrdersComponent {
 	orders: Array<Order>;
