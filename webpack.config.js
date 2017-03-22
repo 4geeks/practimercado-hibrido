@@ -1,45 +1,32 @@
+// Set the `ENV` global variable to be used in the app.
 var path = require('path');
 var webpack = require('webpack');
-var ionicWebpackFactory = require(process.env.IONIC_WEBPACK_FACTORY);
 
-module.exports = {
-  entry: process.env.IONIC_APP_ENTRY_POINT,
-  output: {
-    path: '{{BUILD}}',
-    publicPath: 'build/',
-    filename: process.env.IONIC_OUTPUT_JS_FILE_NAME,
-    devtoolModuleFilenameTemplate: ionicWebpackFactory.getSourceMapperFunction(),
-  },
-  devtool: process.env.IONIC_SOURCE_MAP_TYPE,
+var projectRootDir = process.env.IONIC_ROOT_DIR;
+var appScriptsDir = process.env.IONIC_APP_SCRIPTS_DIR;
 
-  resolve: {
-    extensions: ['.ts', '.js', '.json'],
-    modules: [path.resolve('node_modules')]
-  },
+var config = require(path.join(appScriptsDir, 'config', 'webpack.config.js'));
 
-  module: {
-    loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
-      {
-        test: /\.ts$/,
-        loader: process.env.IONIC_WEBPACK_LOADER
-      }
-    ]
-  },
+var env = process.env.IONIC_ENV || 'dev';
+var envVars;
+try {
+	envVars = require(path.join(projectRootDir, 'env', env + '.json'));
+} catch(e) {
+	envVars = {};
+}
 
-  plugins: [
-    ionicWebpackFactory.getIonicEnvironmentPlugin(),
-    new webpack.EnvironmentPlugin(['IONIC_ENV'])
-  ],
+config.plugins = config.plugins || [];
+config.plugins.push(
+	new webpack.DefinePlugin({
+		ENV: Object.assign(envVars, {
+			environment: JSON.stringify(env)
+		})
+	})
+	);
 
-  // Some libraries import Node modules but don't use them in the browser.
-  // Tell Webpack to provide empty mocks for them so importing them works.
-  node: {
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty'
-  }
-};
+if(env === 'prod') {
+// This helps ensure the builds are consistent if source hasn't changed:
+config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
+}
+
+module.exports = config;
