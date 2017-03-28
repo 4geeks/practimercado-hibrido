@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserService } from '../../services/user/user.service';
 
@@ -16,9 +16,9 @@ export class ProfileComponent {
 				public fb: FormBuilder, private userService: UserService,
 				public alertCtrl: AlertController) {
 		this.passwordForm = this.fb.group({
-			'curr_password': ['', Validators.required],
-			'new_password': ['', Validators.required],
-			'repeat_password': ['', Validators.required],
+			'curr_password': new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+			'new_password': new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+			'repeat_password': new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
 		}, {
 			validator: this.matchingPasswords('new_password', 'repeat_password')
 		});

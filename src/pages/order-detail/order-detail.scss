@@ -10,6 +10,22 @@
 		&.text-status{
 			text-transform: uppercase;
 			color: $color-status-3;
+			
+			&.status-5{/*Rechazado*/
+				color: $color-status-5;
+			}
+			&.status-4{/*Entregado*/
+				color: $color-status-4;
+			}
+			&.status-6{/*Por entregar*/
+				color: $color-status-3;
+			}
+			&.status-3{/*Despachando*/
+				color: $color-status-2;
+			}
+			&.status-1{/*Por aprobar*/
+				color: $color-status-1;
+			}
 		}
 	}
 	.text-products{
