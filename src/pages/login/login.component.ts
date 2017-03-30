@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Nav, NavController, AlertController } from 'ionic-angular';
-import { Platform } from 'ionic-angular';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user/user.service';
 import { MyApp } from '../../app/app.component';
@@ -23,7 +22,15 @@ export class LoginComponent {
 
 	rootPage: any = MyApp;
 
-	constructor(public platform: Platform, public fb: FormBuilder, private navCtrl: NavController, 
+	/**
+	* Constructor inicializa el formulario de login
+	* @param fb 			formulario basado en formbuilder.
+	* @param navCtrl 		controlador de navegación.
+	* @param userService 	Servicios para el modelo usuario.
+	* @param alertCtrl 		Alert para advertencias.
+	* @returns       		Nada.
+	*/
+	constructor(public fb: FormBuilder, private navCtrl: NavController, 
 				private userService: UserService, public alertCtrl: AlertController) {
 		this.user = new User();
 		this.loginForm = this.fb.group({
