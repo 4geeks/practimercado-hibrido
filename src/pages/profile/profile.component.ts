@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserService } from '../../services/user/user.service';
+import { Profile } from "../../models/user";
 
 @Component({
 	selector: 'page-profile',
 	templateUrl: 'profile.html',
-	providers: [UserService],
+	providers: [UserService, Profile],
 })
 export class ProfileComponent {
 	passwordForm: FormGroup;
@@ -14,7 +15,8 @@ export class ProfileComponent {
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, 
 				public fb: FormBuilder, private userService: UserService,
-				public alertCtrl: AlertController) {
+				public alertCtrl: AlertController, public profile: Profile) {
+		this.loadProfile();
 		this.passwordForm = this.fb.group({
 			'curr_password': new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
 			'new_password': new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
@@ -22,6 +24,24 @@ export class ProfileComponent {
 		}, {
 			validator: this.matchingPasswords('new_password', 'repeat_password')
 		});
+	}
+
+	loadProfile(){
+		this.userService
+			.profile()
+			.subscribe(
+				(data) => {
+					this.profile = data.json() as Profile;
+				},
+				(error) => {
+					let alert = this.alertCtrl.create({
+						title: 'Perfil',
+						subTitle: 'Imposible recuperar datos del perfil',
+						buttons: ['OK']
+					});
+					alert.present();
+				}
+			);
 	}
 
 	matchingPasswords(passwordKey: string, confirmPasswordKey: string) {

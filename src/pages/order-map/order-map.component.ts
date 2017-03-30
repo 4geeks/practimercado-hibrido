@@ -1,10 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Order } from "../../models/order";
-//import { UserService } from '../../services/user/user.service';
-//import { OrderService } from '../../services/orders/orders.service';
-//import { OrdersComponent } from '../orders/orders.component';
-//import { LoginComponent } from '../login/login.component';
 
 declare var google;
 

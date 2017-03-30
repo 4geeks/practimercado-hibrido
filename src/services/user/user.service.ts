@@ -53,6 +53,23 @@ export class UserService {
 		}
 	}
 
+	profile(){
+		let headers = new Headers();
+		headers.append("Content-Type", "application/json");
+
+		if(Api.token){
+			headers.append("Authorization", "JWT " + Api.token);
+			return this.http.get(
+				this.env.apiUrl + "auth/me/",
+				{ headers: headers }
+				)
+			.map(response => { return response; })
+			.catch(this.handleErrors);
+		}else{
+			return Observable.throw({ detail: 'Sin autorización', code: 401 });
+		}
+	}
+
 	handleErrors(error: Response) {
 		console.log(error);
 		return Observable.throw(error.json());
