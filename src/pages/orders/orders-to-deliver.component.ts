@@ -18,14 +18,31 @@ export class OrdersToDeliverComponent {
 	next: string = null;
 	prev: string = null;
 
+	/**
+	* Constructor
+	* @param navCtrl 		controlador de navegación.
+	* @param orderService	Servicios para el modelo orden.
+	* @param alertCtrl 		Alert para advertencias.
+	* @param userService 	Servicios para el modelo usuario.
+	* @returns       		Nada.
+	*/
 	constructor(public navCtrl: NavController, public orderService: OrderService, 
 				public alertCtrl: AlertController, public userService: UserService) {
 	}
 
+	/**
+	* Ionic método para precargar data antes de mostrarla en la vista
+	* en este caso se invoca la carga de las ordenes.
+	* @returns       		Nada.
+	*/
 	ionViewDidLoad(){
 		this.loadOrders();
 	}
 
+	/**
+	* Carga las ordenes desde el server.
+	* @returns       		Nada.
+	*/
 	loadOrders(){
 		this.orderService.getOrders()
 			.subscribe(
@@ -43,17 +60,33 @@ export class OrdersToDeliverComponent {
 			);
 	}
 
+	/**
+	* Método para capturar el clic en una orden y diriguir al detalle de
+	* la orden
+	* @param event 			Captura del clic.
+	* @param item 			La data de la orden a mostrar.
+	* @returns       		Nada.
+	*/
 	itemTapped(event, item) {
-		// That's right, we're pushing to ourselves!
 		this.navCtrl.push(OrderDetailComponent, {
 			order: item
 		});
 	}
 
+	/**
+	* Método para filtrar las ordenes por el input search
+	* @param event 			Captura el cambio en el search box.
+	* @returns       		Nada.
+	*/
 	searchOrder(event: any){
 
 	}
 
+	/**
+	* Método para listar el nombre del estado de una orden
+	* @param obj 			La orden seleccionada para mostar el estatus.
+	* @returns       		Nada.
+	*/
 	status_text(obj){
 		let text = "";
 		switch (obj.status.value) {
@@ -82,6 +115,11 @@ export class OrdersToDeliverComponent {
 		return text;
 	}
 
+	/**
+	* Método para cargar mas ordenes al hacer scroll down
+	* @param infiniteScroll		Evento del scroll.
+	* @returns       		Nada.
+	*/
 	doInfinite(infiniteScroll){
 		if(this.next){
 			this.orderService.getOrders(this.next)
@@ -112,8 +150,12 @@ export class OrdersToDeliverComponent {
 		}
 	}
 
+	/**
+	* Método para manejar el error producido por el server al subscribirce.
+	* @param error			Observable con el error producido.
+	* @returns       		Nada.
+	*/
 	handlerErrors(error){
-		console.log(error);
 		if('detail' in error){
 			let alert = this.alertCtrl.create({
 				title: 'Ordenes',
