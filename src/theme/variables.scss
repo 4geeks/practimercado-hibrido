@@ -30,13 +30,41 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222,
   login:	  #ffffff,
-  base:		  #00a8e1
+  base:		  #00a8e1,
+  border:	  #f7941d
 );
 
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
+$searchbar-ios-input-height: 2rem;
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+$searchbar-md-input-line-height: 2rem;
+$tabs-md-tab-text-color: color($colors, login);
+$tabs-md-tab-text-color-active: color($colors, login);
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
 $color-placeholder: white;
 $color-list-item: white;
 $color-base: #00a8e1;
@@ -55,31 +83,6 @@ $color-status-5: #f43048;
 $color-background: #f9f9f9;
 $color-gray: #919191;
 $color-border: #cecece;
-
-
-
-
-
-// App Material Design Variables
-// --------------------------------------------------
-// Material Design only Sass variables can go here
-
-
-
-
-// App Windows Variables
-// --------------------------------------------------
-// Windows only Sass variables can go here
-
-
-
-
-// App Theme
-// --------------------------------------------------
-// Ionic apps can have different themes applied, which can
-// then be future customized. This import comes last
-// so that the above variables are used and Ionic's
-// default are overridden.
 
 @import "ionic.theme.default";
 

@@ -1,3 +1,15 @@
+.searchbar-md .searchbar-search-icon{
+	top: 6px;
+}
+
+.tabs-md .tabbar{
+	background: $color-base;
+}
+
+.tabs-md .tab-button[aria-selected=true]{
+	border-bottom: 3px solid color($colors, border);
+}
+
 .orders-card{
 	ion-card-content{
 		padding: 0;

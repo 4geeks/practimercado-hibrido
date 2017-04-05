@@ -7,12 +7,12 @@ import { LoginComponent } from '../pages/login/login.component';
 import { SideMenuComponent } from '../pages/sidemenu/sidemenu.component';
 
 @Component({
-	templateUrl: 'app.html'
+	templateUrl: 'app.html',
 })
 export class MyApp {
 	@ViewChild(Nav) nav: Nav;
 
-	rootPage: any = LoginComponent;
+	rootPage: any;
 
 	constructor(public platform: Platform, public storage: Storage) {
 		this.initializeApp();

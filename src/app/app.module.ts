@@ -4,7 +4,10 @@ import { Storage } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { SideMenuComponent } from '../pages/sidemenu/sidemenu.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
-import { OrdersComponent } from '../pages/orders/orders.component';
+import { OrdersTabs } from '../pages/orders/orders.component';
+import { OrdersToDeliverComponent } from '../pages/orders/orders-to-deliver.component';
+import { OrdersDeliveredComponent } from '../pages/orders/orders-delivered.component';
+import { OrdersUndeliveredComponent } from '../pages/orders/orders-undelivered.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { OrderDetailComponent } from '../pages/order-detail/order-detail.component';
 import { OrderStatusComponent } from '../pages/order-status/order-status.component';
@@ -23,7 +26,10 @@ console.log(ENV.environment);
     MyApp,
     SideMenuComponent,
     ProfileComponent,
-    OrdersComponent,
+    OrdersTabs,
+    OrdersToDeliverComponent,
+    OrdersDeliveredComponent,
+    OrdersUndeliveredComponent,
     OrderDetailComponent,
     OrderStatusComponent,
     OrderMapComponent
@@ -33,7 +39,7 @@ console.log(ENV.environment);
     FilterPipe
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, { tabsHideOnSubPages: false }),
     EnvironmentsModule
   ],
   bootstrap: [IonicApp],
@@ -42,7 +48,10 @@ console.log(ENV.environment);
     MyApp,
     SideMenuComponent,
     ProfileComponent,
-    OrdersComponent,
+    OrdersTabs,
+    OrdersToDeliverComponent,
+    OrdersDeliveredComponent,
+    OrdersUndeliveredComponent,
     OrderDetailComponent,
     OrderStatusComponent,
     OrderMapComponent

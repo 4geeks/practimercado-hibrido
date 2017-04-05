@@ -39,6 +39,10 @@ export class LoginComponent {
 		});
 	}
 
+	/**
+	* Funcion para validar el formulario
+	* @returns       		Void.
+	*/
 	submit(){
 		
 		if (this.loginForm.get('username').hasError('required')) {
@@ -69,6 +73,11 @@ export class LoginComponent {
 		this.login();
 	}
 
+	/**
+	* Método para logear al usuario en el server, una vez aprobado por el server
+	* el token de sesión es almacenado en localstorage para posteriores consultas
+	* @returns       		Void.
+	*/
 	login() {
 		this.userService.login(this.user)
 			.subscribe(

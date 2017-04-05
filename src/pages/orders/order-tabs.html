@@ -1,0 +1,14 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-searchbar placeholder="Buscar Pedido" (ionInput)="searchOrder($event)"></ion-searchbar>
+	</ion-navbar>
+</ion-header>
+
+<ion-tabs tabsPlacement="top" >
+	<ion-tab [root]="toDeliver" tabTitle="Por entregar"></ion-tab>
+	<ion-tab [root]="delivered" tabTitle="Entregadas"></ion-tab>
+	<ion-tab [root]="undelivered" tabTitle="No entregadas"></ion-tab>
+</ion-tabs>

@@ -5,7 +5,7 @@ import { OrderService } from '../../services/orders/orders.service';
 import { Order } from "../../models/order";
 import { OrderStatusComponent } from '../order-status/order-status.component';
 import { LoginComponent } from '../login/login.component';
-import { OrdersComponent } from '../orders/orders.component';
+import { OrdersTabs } from '../orders/orders.component';
 import { OrderMapComponent } from '../order-map/order-map.component';
 
 @Component({
@@ -30,7 +30,7 @@ export class OrderDetailComponent {
 		this.orderService.updateOrder(this.order.status.href, status)
 			.subscribe(
 				(data) => {
-					this.navCtrl.setRoot(OrdersComponent);
+					this.navCtrl.setRoot(OrdersTabs);
 				},
 				(error) => { this.handlerErrors(error) }
 			);

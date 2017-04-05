@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
 import { UserService } from '../../services/user/user.service';
 import { ProfileComponent } from '../profile/profile.component';
-import { OrdersComponent } from '../orders/orders.component';
+import { OrdersTabs } from '../orders/orders.component';
 import { LoginComponent } from '../login/login.component';
 
 @Component({
@@ -12,13 +12,13 @@ import { LoginComponent } from '../login/login.component';
 export class SideMenuComponent {
 	@ViewChild(Nav) nav: Nav;
 
-	rootPage: any = OrdersComponent;
+	rootPage: any = OrdersTabs;
 	pages: Array<{title: string, component: any, icon: string}>;
 	
 	constructor(public platform: Platform, private userService: UserService, public alertCtrl: AlertController) {
 		this.initializeApp();
 		this.pages = [
-			{ title: 'Ordenes', component: OrdersComponent, icon: 'ios-list-box-outline' },
+			{ title: 'Ordenes', component: OrdersTabs, icon: 'ios-list-box-outline' },
 			{ title: 'Perfil', component: ProfileComponent, icon: 'ios-contact-outline' }
 		];
 	}

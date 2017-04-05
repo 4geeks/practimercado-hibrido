@@ -4,7 +4,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Order } from "../../models/order";
 import { UserService } from '../../services/user/user.service';
 import { OrderService } from '../../services/orders/orders.service';
-import { OrdersComponent } from '../orders/orders.component';
+import { OrdersTabs } from '../orders/orders.component';
 import { LoginComponent } from '../login/login.component';
 
 @Component({
@@ -34,7 +34,7 @@ export class OrderStatusComponent {
 					this.orderService.updateOrder(this.order.comments.href, this.orderForm.get('comment').value)
 						.subscribe(
 							(data) => {
-								this.navCtrl.setRoot(OrdersComponent);
+								this.navCtrl.setRoot(OrdersTabs);
 							},
 							(error) => { this.handlerErrors(error) }
 						);

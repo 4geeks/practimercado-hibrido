@@ -13,6 +13,16 @@ export class ProfileComponent {
 	passwordForm: FormGroup;
 	submitted = false;
 
+	/**
+	* Constructor: carga el perfil, inicializa el formulario de cambio de password
+	* @param navParams		para consultar los datos get
+	* @param navCtrl 		controlador de navegación.
+	* @param fb				formulario basado en formbuilder.
+	* @param userService 	Servicios para el modelo usuario.
+	* @param alertCtrl 		Alert para advertencias.
+	* @param profile 		Provider para el perfil del usuario.
+	* @returns       		Void.
+	*/
 	constructor(public navCtrl: NavController, public navParams: NavParams, 
 				public fb: FormBuilder, private userService: UserService,
 				public alertCtrl: AlertController, public profile: Profile) {
@@ -26,6 +36,11 @@ export class ProfileComponent {
 		});
 	}
 
+	/**
+	* Se subscribe al servicio para capturar los datos del perfil del usuario
+	* desde el server
+	* @returns       		Void.
+	*/
 	loadProfile(){
 		this.userService
 			.profile()
@@ -44,6 +59,12 @@ export class ProfileComponent {
 			);
 	}
 
+	/**
+	* Método para validar que los password nuevos coinciden
+	* @param passwordKey			String que contiene el password nuevo
+	* @param confirmPasswordKey 	String que contiene el password nuevo para revalidar
+	* @returns       		Boolean que describe si los passwords son iguales.
+	*/
 	matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
 		return (group: FormGroup): {[key: string]: any} => {
 			let password = group.controls[passwordKey];
@@ -57,6 +78,10 @@ export class ProfileComponent {
 		}
 	}
 
+	/**
+	* Método para actualizar el password de un usuario en el servidor.
+	* @returns       		Boolean que describe si los passwords son iguales.
+	*/
 	submit(){
 		this.submitted = true;
 

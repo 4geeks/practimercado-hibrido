@@ -14,13 +14,14 @@ export class OrderService {
 	
 	constructor(private http: Http, public storage: Storage, @Inject(EnvVariables) public env) {}
 
-	getOrders(url = null) {
+	getOrders(url = null, status = null) {
 		let headers = new Headers();
 		headers.append("Content-Type", "application/json");
 		if(Api.token){
+			let url_status = status != null ? "?status=" + status: '';
 			headers.append("Authorization", "JWT " + Api.token);
 			return this.http.get(
-				url ? url : this.env.apiUrl + "api/delivering/",
+				url ? url : this.env.apiUrl + "api/delivering/" + url_status,
 				{ headers: headers }
 				)
 			.map(response => {
