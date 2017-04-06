@@ -4,9 +4,10 @@ ion-content{
 		display: flex!important;
 		align-content: center!important;
 		align-items: center!important;
-		background-image: url('../assets/background.jpg');
+		background: url('../assets/background.jpg') center center fixed;
 		background-repeat: no-repeat;
-  		background-size: 100% 100%;
+  		/*background-size: 100% 100%;*/
+        background-size: cover;
 	}
 
 	&.login-content{

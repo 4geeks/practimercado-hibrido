@@ -1,4 +1,3 @@
-//declare var require: any
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { OrderService } from '../../services/orders/orders.service';
@@ -79,7 +78,17 @@ export class OrdersToDeliverComponent {
 	* @returns       		Nada.
 	*/
 	searchOrder(event: any){
+		// set val to the value of the searchbar
+		let val = event.target.value;
 
+		// if the value is an empty string don't filter the items
+		if (val && val.trim() != '') {
+			this.orders = this.orders.filter((item) => {
+				return (item.id == parseInt(val));
+			})
+		}else{
+			this.loadOrders();
+		}
 	}
 
 	/**

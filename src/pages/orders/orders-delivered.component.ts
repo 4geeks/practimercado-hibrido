@@ -1,11 +1,8 @@
-//declare var require: any
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { OrderService } from '../../services/orders/orders.service';
 import { Order } from "../../models/order";
 import { UserService } from '../../services/user/user.service';
-//import { OrderDetailComponent } from "../order-detail/order-detail.component";
-//import { LoginComponent } from '../login/login.component';
 import { OrdersToDeliverComponent } from './orders-to-deliver.component';
 
 var parse = require("parse-link-header");
