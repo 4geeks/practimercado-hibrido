@@ -20,11 +20,16 @@ export class OrdersUndeliveredComponent extends OrdersToDeliverComponent{
 		
 	}
 
+	ionViewDidEnter(){
+		this.loadOrders();
+	}
+
 	loadOrders(){
 		this.orderService.getOrders(null, 5)
 			.subscribe(
 				(data) => {
 					this.orders = data.json() as Order[];
+					console.log("Consulta udl");
 					if(data.headers.get('Link')){
 						let links = parse(data.headers.get('Link'));
 						if(links.next)

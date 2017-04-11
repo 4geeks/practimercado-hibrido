@@ -1,9 +1,10 @@
 .grid-status{
-	height: 80%;
 	.text-status{
-		height: 100%;
 		ion-col{
-			height: 100%
+			.reject-status{
+				text-transform: none;
+				margin-top: 2rem;
+			}
 		}
 	}
 }

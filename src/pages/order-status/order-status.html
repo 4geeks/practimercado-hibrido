@@ -17,12 +17,11 @@
 		</ion-row>
 		<ion-row class="text-status">
 			<ion-col class="col-data customer-data " col-12 push-md-3 col-md-6 push-lg-3 col-lg-6 push-xl-3 col-xl-3>
-				<div class="customer-info reject-data">
-					<ion-textarea formControlName="comment" col-12 placeholder="Por qué rechazas el pedido"></ion-textarea>
-				</div>
+				<button type="button" class="reject-status" ion-button [outline]="rj.id == currReject.id ? false:true" round block *ngFor="let rj of rejectstatus" (click)="setRejectStatus(rj)">{{rj.msg}}</button>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
+	<input type="hidden" name="rejectOrder" formControlName="rejectOrder">
 	<div class="content-bottom">
 		<button type="submit" *ngIf="order.status.value==3" [disabled]="!orderForm.valid || submitted" class="btn-change-status" ion-button round >Guardar</button>
 	</div>

@@ -4,6 +4,7 @@
   "homepage": "https://github.com/mbriceno",
   "private": true,
   "config": {
+    "ionic_copy": "./copy.config.js",
     "ionic_webpack": "./webpack.config.js"
   },
   "scripts": {
@@ -25,11 +26,11 @@
     "@angular/platform-browser-dynamic": "2.2.1",
     "@angular/platform-server": "2.2.1",
     "@ionic/storage": "^1.1.7",
+    "intl": "^1.2.5",
     "ionic-angular": "2.1.0",
     "ionic-native": "2.4.1",
     "ionicons": "3.0.0",
     "parse-link-header": "^0.4.1",
-    "rxjs": "5.0.0-beta.12",
     "sw-toolbox": "3.4.0",
     "zone.js": "0.6.26"
   },

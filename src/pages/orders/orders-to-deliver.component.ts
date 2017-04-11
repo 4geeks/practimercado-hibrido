@@ -30,11 +30,11 @@ export class OrdersToDeliverComponent {
 	}
 
 	/**
-	* Ionic método para precargar data antes de mostrarla en la vista
+	* Ionic método para reivsar la data antes de mostrarla en la vista
 	* en este caso se invoca la carga de las ordenes.
 	* @returns       		Nada.
 	*/
-	ionViewDidLoad(){
+	ionViewDidEnter(){
 		this.loadOrders();
 	}
 
@@ -47,6 +47,7 @@ export class OrdersToDeliverComponent {
 			.subscribe(
 				(data) => {
 					this.orders = data.json() as Order[];
+					console.log("Consulta tdl");
 					if(data.headers.get('Link')){
 						let links = parse(data.headers.get('Link'));
 						if(links.next)

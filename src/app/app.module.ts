@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { MyApp } from './app.component';
@@ -12,6 +12,7 @@ import { LoginComponent } from '../pages/login/login.component';
 import { OrderDetailComponent } from '../pages/order-detail/order-detail.component';
 import { OrderStatusComponent } from '../pages/order-status/order-status.component';
 import { OrderMapComponent } from '../pages/order-map/order-map.component';
+import { OrderProductComponent } from '../pages/order-product/order-product.component';
 import { EnvironmentsModule } from './environment-variables/environment-variables.module';
 import { OrderByPipe } from '../pipes/orderBy';
 import { FilterPipe } from '../pipes/filter';
@@ -32,7 +33,8 @@ console.log(ENV.environment);
     OrdersUndeliveredComponent,
     OrderDetailComponent,
     OrderStatusComponent,
-    OrderMapComponent
+    OrderMapComponent,
+    OrderProductComponent
   ],
   exports: [
     OrderByPipe,
@@ -54,8 +56,9 @@ console.log(ENV.environment);
     OrdersUndeliveredComponent,
     OrderDetailComponent,
     OrderStatusComponent,
-    OrderMapComponent
+    OrderMapComponent,
+    OrderProductComponent
   ],
-  providers: [Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}, {provide: LOCALE_ID, useValue: "es-PA"}]
 })
 export class AppModule {}

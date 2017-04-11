@@ -54,6 +54,24 @@ export class OrderService {
 		}
 	}
 
+	getRejectOptions() {
+		let headers = new Headers();
+		headers.append("Content-Type", "application/json");
+		if(Api.token){
+			headers.append("Authorization", "JWT " + Api.token);
+			return this.http.options(
+				this.env.apiUrl + "api/orders/",
+				{ headers: headers }
+				)
+			.map(response => {
+				return response;
+			})
+			.catch(this.handleErrors);
+		}else{
+			return Observable.throw({ detail: 'Sin autorización', code: 401 });
+		}
+	}
+
 	handleErrors(error: Response) {
 		return Observable.throw(error.json());
 	}

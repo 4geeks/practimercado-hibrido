@@ -1,0 +1,25 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Productos</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="content-custom">
+	<ion-list>
+		<ion-item *ngFor="let item of order.products">
+			<ion-row>
+				<ion-col class="content-product-number" col-3>
+					
+				</ion-col>
+				<ion-col class="content-status-data" col-9 >
+					<span class="">{{item.name}}</span><br>
+					<span class="">{{item.price | currency:'PAB':true}}</span><br>
+					<span class="poduct-qty">{{item.quantity}} Unidades</span>
+				</ion-col>
+			</ion-row>
+		</ion-item>
+	</ion-list>
+</ion-content>

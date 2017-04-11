@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Nav, NavController, AlertController } from 'ionic-angular';
+import { Nav, NavController, AlertController, Platform } from 'ionic-angular';
+import { Splashscreen } from 'ionic-native';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user/user.service';
 import { MyApp } from '../../app/app.component';
@@ -30,12 +31,20 @@ export class LoginComponent {
 	* @param alertCtrl 		Alert para advertencias.
 	* @returns       		Nada.
 	*/
-	constructor(public fb: FormBuilder, private navCtrl: NavController, 
+	constructor(public platform: Platform, public fb: FormBuilder, private navCtrl: NavController, 
 				private userService: UserService, public alertCtrl: AlertController) {
 		this.user = new User();
 		this.loginForm = this.fb.group({
 			'username': ['', Validators.required],
 			'password': ['', Validators.required],
+		});
+	}
+
+	initializeApp() {
+		this.platform.ready().then(() => {
+			// Okay, so the platform is ready and our plugins are available.
+			// Here you can do any higher level native things you might need.
+			Splashscreen.hide();
 		});
 	}
 

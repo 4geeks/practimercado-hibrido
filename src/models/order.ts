@@ -51,3 +51,8 @@ export class Order {
 	price_subtotal: number;
 	price_total: number;
 }
+
+export class Reject{
+	id: number = 0;
+	msg: string = '';
+}
