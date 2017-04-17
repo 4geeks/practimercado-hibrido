@@ -18,8 +18,6 @@ import { EnvironmentsModule } from './environment-variables/environment-variable
 import { OrderByPipe } from '../pipes/orderBy';
 import { FilterPipe } from '../pipes/filter';
 
-console.log(ENV.environment);
-
 @NgModule({
   declarations: [
     OrderByPipe,

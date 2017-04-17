@@ -21,9 +21,7 @@ export class OrderDetailComponent {
 	constructor(public navCtrl: NavController, public navParams: NavParams, 
 				private orderService: OrderService, public alertCtrl: AlertController,
 				private userService: UserService) {
-		// If we navigated to this page, we will have an item available as a nav param
 		this.order = navParams.get('order');
-		console.log(this.order);
 	}
 
 	changeStatus(status){

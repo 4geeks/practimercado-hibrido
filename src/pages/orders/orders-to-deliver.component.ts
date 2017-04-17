@@ -47,7 +47,6 @@ export class OrdersToDeliverComponent {
 			.subscribe(
 				(data) => {
 					this.orders = data.json() as Order[];
-					console.log("Consulta tdl");
 					if(data.headers.get('Link')){
 						let links = parse(data.headers.get('Link'));
 						if(links.next)
