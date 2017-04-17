@@ -15,7 +15,8 @@
 				<span class="text-products">{{order.products.length}} unid.</span><br>
 				<button class="btn-change-status" (click)="showListProducts()" ion-button round >Detalle</button><br>
 				<span class="text-order">{{order.price_total | currency:'PAB':true}}</span><br>
-				<span class="text-order text-status status-{{order.status.value}}">{{status_text(order)}}</span><br>
+				<span *ngIf="order.status.value!=5" class="text-order text-status status-{{order.status.value}}">{{status_text(order)}}</span><br>
+				<span *ngIf="order.status.value==5" class="text-order text-status status-{{order.status.value}}">{{order.comments.value}}</span><br>
 			</ion-col>
 		</ion-row>
 		<ion-row>

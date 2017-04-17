@@ -12,6 +12,7 @@
 			color: $color-status-3;
 			
 			&.status-5{/*Rechazado*/
+				text-transform: none;
 				color: $color-status-5;
 			}
 			&.status-4{/*Entregado*/

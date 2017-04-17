@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
-import { Splashscreen } from 'ionic-native';
 import { UserService } from '../../services/user/user.service';
 import { ProfileComponent } from '../profile/profile.component';
 import { OrdersTabs } from '../orders/orders.component';
@@ -16,7 +15,8 @@ export class SideMenuComponent {
 	rootPage: any = OrdersTabs;
 	pages: Array<{title: string, component: any, icon: string}>;
 	
-	constructor(public platform: Platform, private userService: UserService, public alertCtrl: AlertController) {
+	constructor(public platform: Platform, private userService: UserService, 
+				public alertCtrl: AlertController) {
 		this.initializeApp();
 		this.pages = [
 			{ title: 'Ordenes', component: OrdersTabs, icon: 'ios-list-box-outline' },
@@ -25,9 +25,7 @@ export class SideMenuComponent {
 	}
 
 	initializeApp() {
-		this.platform.ready().then(() => {
-			Splashscreen.hide();
-		});
+		this.platform.ready().then(() => {});
 	}
 
 	openPage(page) {

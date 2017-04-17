@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyApp } from './app.component';
 import { SideMenuComponent } from '../pages/sidemenu/sidemenu.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
@@ -59,6 +60,6 @@ console.log(ENV.environment);
     OrderMapComponent,
     OrderProductComponent
   ],
-  providers: [Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}, {provide: LOCALE_ID, useValue: "es-PA"}]
+  providers: [Storage, SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler}, {provide: LOCALE_ID, useValue: "es-PA"}]
 })
 export class AppModule {}
