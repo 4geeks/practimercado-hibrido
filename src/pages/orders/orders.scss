@@ -10,6 +10,12 @@
 	border-bottom: 3px solid color($colors, border);
 }
 
+.spinner-container {
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+}
+
 .orders-card{
 	ion-card-content{
 		padding: 0;

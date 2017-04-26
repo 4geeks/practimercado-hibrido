@@ -3,11 +3,14 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-searchbar placeholder="Buscar Pedido" (ionInput)="searchOrder($event)"></ion-searchbar>
+		<ion-searchbar placeholder="Buscar Pedido" [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
 	</ion-navbar>
 </ion-header>
 
 <ion-content class="content-custom">
+	<div *ngIf="searching" class="spinner-container">
+        <ion-spinner></ion-spinner>
+    </div>
 	<ion-card *ngFor="let item of orders | orderBy: ['+id']" class="orders-card" (click)="itemTapped($event, item)">
 		<ion-card-content>
 			<ion-row>

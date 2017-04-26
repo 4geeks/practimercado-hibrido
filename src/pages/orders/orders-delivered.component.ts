@@ -29,7 +29,12 @@ export class OrdersDeliveredComponent extends OrdersToDeliverComponent{
 			.subscribe(
 				(data) => {
 					this.orders = data.json() as Order[];
-					console.log("Consulta dl");
+					
+					this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
+						this.searching = false;
+						this.setFilteredItems();
+					});
+
 					if(data.headers.get('Link')){
 						let links = parse(data.headers.get('Link'));
 						if(links.next)

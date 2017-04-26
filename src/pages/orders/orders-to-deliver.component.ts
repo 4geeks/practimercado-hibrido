@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { NavController, AlertController } from 'ionic-angular';
 import { OrderService } from '../../services/orders/orders.service';
 import { Order } from "../../models/order";
 import { UserService } from '../../services/user/user.service';
 import { OrderDetailComponent } from "../order-detail/order-detail.component";
 import { LoginComponent } from '../login/login.component';
+import 'rxjs/add/operator/debounceTime';
+
 var parse = require("parse-link-header");
 
 @Component({
@@ -16,6 +19,9 @@ export class OrdersToDeliverComponent {
 	orders: Array<Order>;
 	next: string = null;
 	prev: string = null;
+	searchTerm: string = '';
+	searchControl: FormControl;
+	searching: boolean = false;
 
 	/**
 	* Constructor
@@ -27,6 +33,7 @@ export class OrdersToDeliverComponent {
 	*/
 	constructor(public navCtrl: NavController, public orderService: OrderService, 
 				public alertCtrl: AlertController, public userService: UserService) {
+		this.searchControl = new FormControl();
 	}
 
 	/**
@@ -47,6 +54,12 @@ export class OrdersToDeliverComponent {
 			.subscribe(
 				(data) => {
 					this.orders = data.json() as Order[];
+					
+					this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
+						this.searching = false;
+						this.setFilteredItems();
+					});
+
 					if(data.headers.get('Link')){
 						let links = parse(data.headers.get('Link'));
 						if(links.next)
@@ -60,6 +73,28 @@ export class OrdersToDeliverComponent {
 	}
 
 	/**
+	* Método para filtrar las ordenes por el input search
+	* @returns       		Nada.
+	*/
+	setFilteredItems() {
+		if (this.searchTerm && this.searchTerm.trim() != '') {
+			this.orders = this.orders.filter((item) => {
+				return (item.id == parseInt(this.searchTerm));
+			});
+		}else{
+			this.loadOrders();
+		}
+	}
+
+	/**
+	* Método para activar el spinner
+	* @returns       		Nada.
+	*/
+	onSearchInput(){
+		this.searching = true;
+	}
+
+	/**
 	* Método para capturar el clic en una orden y diriguir al detalle de
 	* la orden
 	* @param event 			Captura del clic.
@@ -70,25 +105,6 @@ export class OrdersToDeliverComponent {
 		this.navCtrl.push(OrderDetailComponent, {
 			order: item
 		});
-	}
-
-	/**
-	* Método para filtrar las ordenes por el input search
-	* @param event 			Captura el cambio en el search box.
-	* @returns       		Nada.
-	*/
-	searchOrder(event: any){
-		// set val to the value of the searchbar
-		let val = event.target.value;
-
-		// if the value is an empty string don't filter the items
-		if (val && val.trim() != '') {
-			this.orders = this.orders.filter((item) => {
-				return (item.id == parseInt(val));
-			})
-		}else{
-			this.loadOrders();
-		}
 	}
 
 	/**
