@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="fourgeeks.practimercado.despachador" version="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="fourgeeks.practimercado.despachador" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Practimercados</name>
   <description>Practimercados de la tienda a tu casa</description>
   <author email="miguelpacheco04@gmail.com" href="https://www.twitter.com/mikebric">Miguel Briceño</author>
