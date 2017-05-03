@@ -17,15 +17,10 @@ export class SideMenuComponent {
 	
 	constructor(public platform: Platform, private userService: UserService, 
 				public alertCtrl: AlertController) {
-		this.initializeApp();
 		this.pages = [
 			{ title: 'Ordenes', component: OrdersTabs, icon: 'ios-list-box-outline' },
 			{ title: 'Perfil', component: ProfileComponent, icon: 'ios-contact-outline' }
 		];
-	}
-
-	initializeApp() {
-		this.platform.ready().then(() => {});
 	}
 
 	openPage(page) {
