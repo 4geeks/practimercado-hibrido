@@ -14,7 +14,6 @@ import { OrderDetailComponent } from '../pages/order-detail/order-detail.compone
 import { OrderStatusComponent } from '../pages/order-status/order-status.component';
 import { OrderMapComponent } from '../pages/order-map/order-map.component';
 import { OrderProductComponent } from '../pages/order-product/order-product.component';
-import { EnvironmentsModule } from './environment-variables/environment-variables.module';
 import { OrderByPipe } from '../pipes/orderBy';
 import { FilterPipe } from '../pipes/filter';
 
@@ -42,7 +41,6 @@ import { FilterPipe } from '../pipes/filter';
   imports: [
     IonicModule.forRoot(MyApp, { tabsHideOnSubPages: false }),
     IonicStorageModule.forRoot(),
-    EnvironmentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

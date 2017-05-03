@@ -1,24 +1,23 @@
 import { Storage } from '@ionic/storage';
-import { Injectable, Inject } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Http, Headers, Response } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
-import { EnvVariables } from '../../app/environment-variables/environment-variables.token';
 import { User } from "../../models/user";
 import { Api } from "../api";
 
 @Injectable()
 export class UserService {
 	
-	constructor(private http: Http, public storage: Storage, @Inject(EnvVariables) public env) {}
+	constructor(private http: Http, public storage: Storage) {}
 
 	login(user: User) {
 		let headers = new Headers();
 		headers.append("Content-Type", "application/json");
 
 		return this.http.post(
-			this.env.apiUrl + "auth/login/",
+			Api.apiUrl + "auth/login/",
 			JSON.stringify({
 				username: user.username,
 				password: user.password,
@@ -37,10 +36,9 @@ export class UserService {
 		let headers = new Headers();
 		headers.append("Content-Type", "application/json");
 		if(Api.token){
-			console.log(Api.token);
 			headers.append("Authorization", "JWT " + Api.token);
 			return this.http.put(
-				this.env.apiUrl + "auth/password/",
+				Api.apiUrl + "auth/password/",
 				JSON.stringify({
 					current_password: curr_password,
 					new_password: new_password,
@@ -60,7 +58,7 @@ export class UserService {
 		if(Api.token){
 			headers.append("Authorization", "JWT " + Api.token);
 			return this.http.get(
-				this.env.apiUrl + "auth/me/",
+				Api.apiUrl + "auth/me/",
 				{ headers: headers }
 				)
 			.map(response => { return response; })
@@ -71,7 +69,6 @@ export class UserService {
 	}
 
 	handleErrors(error: Response) {
-		console.log(error);
 		return Observable.throw(error.json());
 	}
 

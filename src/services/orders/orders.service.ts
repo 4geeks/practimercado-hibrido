@@ -1,18 +1,15 @@
 import { Storage } from '@ionic/storage';
-import { Injectable, Inject } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Http, Headers, Response } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
-import { EnvVariables } from '../../app/environment-variables/environment-variables.token';
-
-//import { Order } from "../../models/order";
 import { Api } from "../api";
 
 @Injectable()
 export class OrderService {
 	
-	constructor(private http: Http, public storage: Storage, @Inject(EnvVariables) public env) {}
+	constructor(private http: Http, public storage: Storage) {}
 
 	getOrders(url = null, status = null) {
 		let headers = new Headers();
@@ -21,7 +18,7 @@ export class OrderService {
 			let url_status = status != null ? "?status=" + status: '';
 			headers.append("Authorization", "JWT " + Api.token);
 			return this.http.get(
-				url ? url : this.env.apiUrl + "api/delivering/" + url_status,
+				url ? url : Api.apiUrl + "api/delivering/" + url_status,
 				{ headers: headers }
 				)
 			.map(response => {
@@ -60,7 +57,7 @@ export class OrderService {
 		if(Api.token){
 			headers.append("Authorization", "JWT " + Api.token);
 			return this.http.options(
-				this.env.apiUrl + "api/orders/",
+				Api.apiUrl + "api/orders/",
 				{ headers: headers }
 				)
 			.map(response => {
