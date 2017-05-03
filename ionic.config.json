@@ -1,6 +1,5 @@
 {
-	"name": "Practimercados",
-	"app_id": "",
-	"v2": true,
-	"typescript": true
+  "name": "Practimercados",
+  "app_id": "",
+  "type": "ionic-angular"
 }

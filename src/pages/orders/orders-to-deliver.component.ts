@@ -55,7 +55,7 @@ export class OrdersToDeliverComponent {
 				(data) => {
 					this.orders = data.json() as Order[];
 					
-					this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
+					this.searchControl.valueChanges.debounceTime(1000).subscribe(search => {
 						this.searching = false;
 						this.setFilteredItems();
 					});

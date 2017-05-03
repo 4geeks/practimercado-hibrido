@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage'
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyApp } from './app.component';
 import { SideMenuComponent } from '../pages/sidemenu/sidemenu.component';
@@ -41,6 +41,7 @@ import { FilterPipe } from '../pipes/filter';
   ],
   imports: [
     IonicModule.forRoot(MyApp, { tabsHideOnSubPages: false }),
+    IonicStorageModule.forRoot(),
     EnvironmentsModule
   ],
   bootstrap: [IonicApp],
@@ -58,6 +59,6 @@ import { FilterPipe } from '../pipes/filter';
     OrderMapComponent,
     OrderProductComponent
   ],
-  providers: [Storage, SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler}, {provide: LOCALE_ID, useValue: "es-PA"}]
+  providers: [SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler}, {provide: LOCALE_ID, useValue: "es-PA"}]
 })
 export class AppModule {}
