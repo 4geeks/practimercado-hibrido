@@ -2,7 +2,6 @@ StackLayout {
   margin-left: 30;
   margin-right: 30;
   padding-bottom: 15;
-  /*background-color: white;*/
 }
 Image {
   margin-top: 5;
@@ -26,7 +25,6 @@ TextField:highlighted{
   margin: 0;
   border-size: 0;
   border-color: white;
-  /*border-radius: 20;*/
   width: 60%;
   height: 50;
 }
