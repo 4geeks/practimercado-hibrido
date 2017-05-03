@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from 'ionic-native';
 import { Api } from "../services/api";
 import { LoginComponent } from '../pages/login/login.component';
 import { SideMenuComponent } from '../pages/sidemenu/sidemenu.component';
@@ -24,7 +23,6 @@ export class MyApp {
 		this.platform.ready().then(() => {
 			// Okay, so the platform is ready and our plugins are available.
 			// Here you can do any higher level native things you might need.
-			StatusBar.styleDefault();
 			this._SplashScreen.hide();
 			this.storage.get('token-pct').then((value) => {
 				Api.token = value;
