@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Nav, NavController, AlertController, Platform } from 'ionic-angular';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user/user.service';
-import { MyApp } from '../../app/app.component';
 import { SideMenuComponent } from '../../pages/sidemenu/sidemenu.component';
 
 
@@ -19,8 +18,6 @@ export class LoginComponent {
 	loginForm: FormGroup;
 
 	@ViewChild(Nav) nav: Nav;
-
-	rootPage: any = MyApp;
 
 	/**
 	* Constructor inicializa el formulario de login
