@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage'
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -59,6 +59,6 @@ import { FilterPipe } from '../pipes/filter';
     OrderMapComponent,
     OrderProductComponent
   ],
-  providers: [SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler}, {provide: LOCALE_ID, useValue: "es-PA"}]
+  providers: [SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
